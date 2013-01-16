@@ -19,11 +19,11 @@
 				<input type="text" name="isbn" id="isbn"/>
 			</p>
 			<p>
-				<label for="titulo">TÃ­tulo: </label>
+				<label for="titulo">Título: </label>
 				<input type="text" name="titulo" id="titulo"/>
 			</p>
 			<p>
-				<label for="categoria">CategorÃ­a: </label>
+				<label for="categoria">Categoría: </label>
 				<select name="categoria" id="seleccionar">
 					<option value="seleccionar">seleccionar</option>
 <%		
