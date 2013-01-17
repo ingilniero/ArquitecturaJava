@@ -37,6 +37,11 @@ public class Libro {
 		super();
 	}
 	
+	public Libro(String isbn){
+		super();
+		this.isbn = isbn;
+	}
+	
 	public Libro(String isbn, String titulo,String categoria){
 		super();
 		this.isbn = isbn;

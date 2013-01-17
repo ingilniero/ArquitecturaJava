@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Formulario alta libro</h1>
-	<form action="InsertarLibro.jsp" id="miformulario" onSubmit="return validacion();">
+	<form action="InsertarLibro.do" id="miformulario" onSubmit="return validacion();">
 		<fieldset>
 			<legend>Formulario alta libro</legend>
 			<p>
@@ -27,7 +27,7 @@
 				<select name="categoria" id="seleccionar">
 					<option value="seleccionar">seleccionar</option>
 <%		
-		List<String> listaDeCategorias = Libro.buscarTodasLasCategorias();
+		List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCategorias");
 		
 		for(String categoria:listaDeCategorias){
 %>
@@ -45,7 +45,7 @@
 		</fieldset> 
 	</form>
 	<p>
-		<a href="MostrarLibros.jsp">Mostrar Libros</a>
+		<a href="MostrarLibros.do">Mostrar Libros</a>
 	</p>
 </body>
 </html>

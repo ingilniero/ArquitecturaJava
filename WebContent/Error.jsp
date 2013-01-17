@@ -10,6 +10,6 @@
 	<%=exception.getMessage()%>
 	
 	Error interno:
-	<%=exception.getCause().getMessage()%>
+	<%=exception.getMessage()%>
 </body>
 </html>

@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/formato.css" />
 </head>
 <body>
-	<form action="SalvarLibro.jsp" id="miformulario" onSubmit="return validacion();">
+	<form action="SalvarLibro.do" id="miformulario" onSubmit="return validacion();">
 		<fieldset>
 			<legend>Formulario Editar libro</legend>
 			<p>
@@ -30,7 +30,7 @@
 				<select name="categoria" id="seleccionar">
 					<option value="seleccionar">seleccionar</option>
 <%		
-		List<String> listaDeCategorias = Libro.buscarTodasLasCategorias();
+		List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCategorias");
 		
 		for(String categoria:listaDeCategorias){
 			
@@ -54,7 +54,7 @@
 		</fieldset> 
 	</form>
 	<p>
-		<a href="MostrarLibros.jsp">Mostrar Libros</a>
+		<a href="MostrarLibros.do">Mostrar Libros</a>
 	</p>
 </body>
 </html>
