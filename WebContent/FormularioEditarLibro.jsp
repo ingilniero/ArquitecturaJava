@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "com.arquitecturajava.Libro"%>
 <%@ page import = "java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
     
 <% Libro libro = Libro.buscarPorClave(request.getParameter("isbn")); %>
 
@@ -29,23 +30,9 @@
 				<label for="categoria">Categoría: </label>
 				<select name="categoria" id="seleccionar">
 					<option value="seleccionar">seleccionar</option>
-<%		
-		List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCategorias");
-		
-		for(String categoria:listaDeCategorias){
-			
-			String selected = "";
-			
-			if(libro.getCategoria().equals(categoria)){
-				selected = "selected";
-			}
-%>
-					<option value="<%=categoria%>" <%= selected %>>
-					<%=categoria%>
-					</option>
-<%
-		}
-%>
+					<c:forEach var="categoria" items="listaDeCategorias">
+					   <option value="${categoria}">${categoria}</option>)
+					</c:forEach>
 		</select>
 			</p>
 			<p>

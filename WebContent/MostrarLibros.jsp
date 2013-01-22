@@ -5,7 +5,8 @@
 <%@ page import="java.sql.SQLException" %> 
 <%@ page import="java.sql.ResultSet" %> 
 <%@ page import="java.util.List" %> 
-<%@ page import="com.arquitecturajava.*" %> 
+<%@ page import="com.arquitecturajava.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html> 
 <html lang="es"> 
 	<head> 
@@ -16,36 +17,20 @@
 	<form action="filtrar.do" method="get">
 		<select name="categoria">
 			<option value="seleccionar">seleccionar</option>
-<%		
-	List<String> listaDeCategorias = null;
-	listaDeCategorias = (List<String>) request.getAttribute("listaDeCategorias"); 
-// 	listaDeCategorias = Libro.buscarTodasLasCategorias(); 
-		
-		for(String categoria:listaDeCategorias){
-%>
-<option value="<%=categoria%>">
-		<%=categoria%>
-</option>
-<%
-		}
-%>
+			<c:forEach var="categoria" items="${listaDeCategorias}">
+			<option value="${categoria}">${categoria}</option>
+			</c:forEach>
 		</select>
 		<input type="submit" value="Filtrar">
 		</form>
 		<br>
-<%  
- 
-List<Libro> listaDeLibros = (List<Libro>) request.getAttribute("listaDeLibros");
+		<c:forEach var="libro" items="${listaDeLibros}">
+		  ${libro.ISBN}${libro.titulo}${libro.categoria}
+		  <a href="BorrarLibro.do?isbn=${libro.ISBN}">borrar</a>
+		  <a href="FormularioEditarLibro.do?isbn=${libro.ISBN}">editar</a>
+		  <br/>
+		 </c:forEach>
+		 
 
-
-  for(Libro libro:listaDeLibros) { %> 
-    <%=libro.getISBN()%> 
-    <%=libro.getTitulo()%> 
-    <%=libro.getCategoria()%> 
-    <a href="BorrarLibro.do?isbn=<%=libro.getISBN()%>">Borrar</a>
-    <a href="FormularioEditarLibro.do?isbn=<%=libro.getISBN()%>">Editar</a>
-    <br/>    
-<% } 
-%> 
 <a href="FormularioInsertarLibro.do">Insertar Libro</a> 
 </body></html> 

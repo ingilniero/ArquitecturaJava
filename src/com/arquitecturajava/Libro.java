@@ -14,7 +14,7 @@ public class Libro {
 	}
 	
 	public String getISBN(){
-		return this.isbn;
+		return isbn;
 	}
 
 	public String getTitulo() {

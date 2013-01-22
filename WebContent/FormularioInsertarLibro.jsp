@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ page import="java.util.List" %> 
 <%@ page import="com.arquitecturajava.*" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+
 <!DOCTYPE html">
 <html lang="es">
 <head>
@@ -8,6 +10,8 @@
 <title>Fomulario Libro</title>
 <script type="text/javascript" src="js/validacion.js"></script>
 <link rel="stylesheet" type="text/css" href="css/formato.css" />
+
+
 </head>
 <body>
 	<h1>Formulario alta libro</h1>
@@ -26,18 +30,10 @@
 				<label for="categoria">Categoría: </label>
 				<select name="categoria" id="seleccionar">
 					<option value="seleccionar">seleccionar</option>
-<%		
-		List<String> listaDeCategorias = (List<String>) request.getAttribute("listaDeCategorias");
-		
-		for(String categoria:listaDeCategorias){
-%>
-					<option value="<%=categoria%>">
-					<%=categoria%>
-					</option>
-<%
-		}
-%>
-		</select>
+					<c:forEach var="categoria" items="${listaDeCategorias}">
+					   <option value="${categoria}">${categoria}</option>
+					</c:forEach>
+        		</select>
 			</p>
 			<p>
 				<input type="submit" value="Insertar"/>
